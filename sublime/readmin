@@ -1,0 +1,10 @@
+解决linux版sublime中文的支持问题
+
+
+1.编译.c文件： gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC
+2.启动命令增加： LD_PRELOAD=./libsublime-imfix.so sublime_text
+
+
+enjoy for sublime
+
+@see https://forum.sublimetext.com/t/input-method-support/5446/16
