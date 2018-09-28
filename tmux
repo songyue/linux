@@ -25,6 +25,9 @@ tmux中有3种概念:
     会话状态内查看方法: ctrl+b s
 4.恢复会话
     tmux a -t sessionName (其中a字母是attach的头字母 -t 指定要进入已存在的会话名)
+    This section contains a list of the commands supported by tmux.  Most commands accept the optional -t (and sometimes -s) argument with one of target-client, target-session target-window, or
+     target-pane.  These specify the client, session, window or pane which a command should affect.
+
 5.销毁会话
     tmux kill-session -t sessionName 
     会话状态内: ctrl+b : (按组合键之后再按一个冒号键),状态栏变成黄色之后提示我们可以在会话环境中输入命令，此时输入 kill-session -t session1 回车即可
