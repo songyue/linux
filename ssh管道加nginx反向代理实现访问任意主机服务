@@ -20,5 +20,16 @@ web server实现：
 
 ssh server实现
 1.内网主机：ssh -qnfNT -g -R 3322:localhost:22 myaliyun  
+2.外网服务器： ssh localhost -p 3322
 
-测试方式： ssh myaliyun -p 3322
+为了方便链接，可在服务端配置.ssh/config 文件
+ cat <<EOF >> .ssh/config
+Host mywork
+HostName localhost
+User songyue
+Port 3322
+EOF
+
+然后上传公钥到内网服务器
+    ssh-copy-id mywork 
+现在就可以直接输入 ssh mywork 登录到我的内网电脑了
