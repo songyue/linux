@@ -1,0 +1,24 @@
+实现原理
+web服务器（内网主机）通过 ssh(外网服务器)转发监听端口，在ssh主机上，配置nginx反向代理到转发的监听端口，实现代码如下
+
+web server实现：
+1.内网主机：ssh -qnfNT -g -R 3380:localhost:80 myaliyun  
+2.外网服务器nginx配置：
+    server {
+    	listen 3480 ;
+     	location / {
+     	       proxy_redirect off;
+     	       proxy_set_header Host $host;
+     	       proxy_set_header X-Real-IP $remote_addr;
+     	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     	       proxy_pass http://127.0.0.1:3380;
+     	   }
+    }
+
+测试方式： curl http://myaliyun:3480
+需要注意的是，外网服务器需要开启对应的端口白名单，我用的阿里云是白名单模式，所以需要添加白名单
+
+ssh server实现
+1.内网主机：ssh -qnfNT -g -R 3322:localhost:22 myaliyun  
+
+测试方式： ssh myaliyun -p 3322
