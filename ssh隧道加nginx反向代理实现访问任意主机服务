@@ -33,3 +33,27 @@ EOF
 然后上传公钥到内网服务器
     ssh-copy-id mywork 
 现在就可以直接输入 ssh mywork 登录到我的内网电脑了
+
+===================================
+和qq群的网友讨论后发现一个更好的ssh代理方案,使用nginx的stream模块实现,配置如下
+nginx.conf 文件添加
+
+stream {
+        upstream ssh {
+                server 127.0.0.1:3322;
+        }
+        server {
+                listen 3422;
+                proxy_pass ssh;
+                proxy_connect_timeout 1h;
+                proxy_timeout 1h;
+        }
+}
+
+然后本地使用 ssh myaliyun -p 3422 即可登录
+修改.ssh/config,添加如下
+    Host workpc
+    HostName myaliyun
+    Port 3422
+
+之后使用 ssh workpc 即可登录公司主机了
