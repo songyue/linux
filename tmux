@@ -78,3 +78,42 @@ tmux中有3种概念:
 
 
 参考网址 https://www.cnblogs.com/wangqiguo/p/8905081.html
+
+======= 常用命令 ========
+窗口
+   c => create  
+   p => previous
+   n => next
+   0 => switch 0 window
+   w => window list 
+   l => 相邻的窗口
+   & => close 
+窗格
+   % => 垂直分屏
+   " => 水平分平
+   o => switch pane
+   方向键 => 直接切换
+   空格 => 重新布局
+   z => 最大/恢复
+   x => close 
+   ctrl+方向 => 调整大小
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================================
