@@ -57,3 +57,45 @@ stream {
     Port 3422
 
 之后使用 ssh workpc 即可登录公司主机了
+
+
+========= 20180930 更新
+
+
+最近使用阿里云vps+ssh+nginx代理,实现可以在任意地方访问公司电脑任何服务,今天突然想在加个web站点访问,按照之前的方法,我需要在开个端口,如果加很多站,那就会变得很麻烦,所以我想使用nginx的host变量,实现一个端口号访问多站点的功能,我想了下,只需要在nginx加个判断,根据cookie来设置host参数就可以解决了,我创建了一个php文件,用来显示站点列表,和切换站点功能,另外nginx部分直接看下面的配置吧,
+
+nginx配置文件:
+
+server {
+        
+	root /var/www/html; #如果全是代理转发,root可不设置,这里是为了访问sitelist.php 使用
+	listen 3480 ;
+	set $target_host $host; #设置一个变量,默认值为当前host,这样就兼容了本地绑定host方式访问
+    
+    # 这里是判断cookice的地方,每增加一个站点需要写一个判断
+    # 如果这里使用正则的话,就不需要每次添加了,以后在研究如何使用正则
+	if ($http_cookie ~ 'target_host=yaf_app.local') {
+	    set $target_host 'yaf_app.local';
+  	}
+
+    # 站点列表页面
+    location ~ ^/sitelist.php$ {
+	   include fastcgi_params;
+	   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	   fastcgi_pass 127.0.0.1:9000;
+	   #fastcgi_pass unix:/var/run/php5-fpm.sock;
+	   try_files $uri =404;
+   	 }	
+
+ 	location / {
+ 	       proxy_redirect off;
+ 	       proxy_set_header Host $target_host; # 改成使用我们的变量
+ 	       #proxy_set_header Host $host; # 原来的配置
+ 	       proxy_set_header X-Real-IP $remote_addr;
+ 	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ 	       proxy_pass http://127.0.0.1:3380;
+ 	   }
+	
+}
+
+
