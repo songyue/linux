@@ -1,0 +1,263 @@
+1、rev命令
+一行接一行地颠倒所输入的字符串。
+
+    $ rev
+    songyue
+    euygnos
+    
+2、asciiview命令
+    1)先安装aview
+        sudo apt-get install aview
+    2)再安装imagemagick
+        sudo apt-get install imagemagick
+    3)使用asciiview
+    asciiview test.png -driver curses
+
+效果如下：
+
+
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQm#W#mBmBmWmWmWmWBWWWmQQWmW#WWWWWWWWWWWWQWWQWd#QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWWWW##Z#Z#Z#Z##WW#WBWWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQmmmmmmmmmmmmmmmmZ#mWWmm##$mmmQmmQmQQmQmmmmQWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWBWBW##Z#Z#Z#Z##WWWBWWQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQWW#####ZZXZXXZZ#ZZZZZZZZXZZZZZ##Z##WWWQQQQQQQQQQQQQQQQQQQQQQQQQQQWQQQQQQQQQQQQQQQ##mWWWmm##WQQQQQQQQWQQQQQQQWQQQQQQQQQQQQQQQQQQQQQQQQWW#####ZZZZXXZZZZZZZZZZZZXZZZZ#Z##W$WQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQWW##Z##ZZZ#Z#Z#Z#Z#ZZ#Z#Z#Z#ZZ#Z#ZZZZZZZXZ##WWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ##mWQWmm##WQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWZ#ZZZ#XZZZZ#Z#Z#Z#Z#Z#Z#Z#Z#ZZ#Z#Z#XZZZ#ZWWWQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQWW#Z#ZXZ#ZZ#Z#ZZZ#ZZ#ZZZ#ZZZZZZZZ#ZZZZZZZZZZZZZ#XZ##$QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ##mWWWmmm#WQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWZ#ZXZZZZZZZZZ#ZZZZZZZZZZZZ#ZZZ#ZZ#ZZZ#ZZ##Z#ZZZ#ZWWWQQQQQQQQQQQQ
+                                   QQQQQQQQQQQW##ZZZZ#Z#ZZ#Z#ZZ#ZZZ#ZZ#ZZZ#Z#Z#Z#ZZZZZ#ZZZ#ZZZZZXZXZ#Z#WWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ#ZmWWWmmm#QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ$#ZZZXXZZZZZZZZ#ZZZZ#ZZ#Z#Z#Z#ZZ#ZZZ#ZZ#ZZ#ZZZ#ZZ#ZZ#ZZZWWWQQQQQQQQQ
+                                   QQQQQQQQWB#ZZZZ##Z#ZZ#ZZ#ZZ#ZZ#ZZZ#ZZ#ZZZZZZZZZZZZZZZZZZZZZZZZZXZXZ#ZmQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ###WWWmmm#WQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWZ#XXXZXZZZXZZZZZZZZZZZZZZZZZZZZZ#ZZ#ZZZ#Z#ZZ#Z#ZZ#Z#Z#ZZ#ZZ#WWQQQQQQQ
+                                   QQQQQQW##ZZZ#Z#ZZ#ZZ#ZZ#ZZ#ZZ#ZZ#ZZZ#ZZZZ#Z#ZZZZZZZZZZZZZZXZXXXXXXmmWWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ#Z#mWWWmm#WQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWmmXXXXXZXZZZZZZZZZZZZZZZZZ#Z#Z#ZZZZZ#ZZZZZ#ZZZZ#Z#ZZ#Z#ZZ#ZZm$WQQQQQ
+                                   QQQQQWZ#ZZ#Z#ZZ#ZZZ#ZZ#ZZ#ZZZZZ#ZZ#ZZZZZZZZZZZZZZZZZZZZXZXXXXXXmmQWWQQQQQQQQQQQQQQQQQQQQQQQWQWQQQWQQQWm#mWWmmmmmWWQWWQWQWQQQQQQQQQQQQQQQQQQQQQQQQQWWmZXZZXXZXZZZZZZZZZ#ZZZZZZZZZZ#Z#ZZ#Z#ZZZ#Z#ZZZZ#ZZZ#ZZ#ZZ##WWQQQ
+                                   QQQW#ZZZ#ZZ#ZZ#Z#Z#ZZ#ZZ#ZZZ#Z#ZZZZZZZZZ#ZZZZZZZZZZZZXXXXZXmmQWQQQQQQQQQQQQQQWQQQWQW$BBWWmmmmmm#mmmmmmmBmBmBWmWmmW#mmm#mmmWWWB8B$QWWQQWQQQQQQQQQQQQQQQQmmXXXZXXZXZZZZZZZZZZZZZZZ#ZZZZ#ZZZZ#ZZ#ZZ#Z#ZZ#ZZ#ZZ#Z#Z#$QQQ
+                                   QQWZ#Z#Z#Z#ZZ#ZZZZZZ#ZZZZZ#ZZZZZZ#ZZ#ZZZZZZZZZZZZZXZXZXXmmWWWWQQQQQQQWQWQWW8$Wmmm#mmBBBBBWWWmWWWWWWWWWWWWWWWBWWWWBWWWWWWBWmmBmWmmmmmm#WW#$QWQQQQQQQQQQQWQWQmXXZXXZXZZZZZZZZZZZZZZZZ#ZZZZ#ZZ#ZZZ#ZZZ#ZZ#Z#Z#Z#ZZ#Z#WQ
+                                   QWZ#ZZZ#ZZZZ#ZZZ#Z#ZZZZ#Z#XZ#ZZ#ZZZZZZZZZZZZXZXXXZXXXmmQWQQQQQQQQQWWBW#mm#mmWBWmWWWWWWmWmW########Z##Z#Z#+"3Z#ZZ###########WmWWWWWWWWmWmBmmmm#W#$WQQQQWQQQWWWQmpXXXXZXZXZZZZZZZ#ZZZZZZZZZZ#ZZ#ZZZ#ZZZ#ZZZZZZZZ#Z###Q
+                                   QZ#ZZ#ZZZ#Z#ZZ#ZZZZZ#Z#ZZZZZZZZZZZZZZZZZZXZXZXXXXXmQWQQQQQQWQWBW#mmmmmWWWWWWBmmW##X#XZZZZXXZZZZXXZZZZZZZm|:]#ZZ#ZZZZZZZZZZZZZZZZZ####mmWWWWWWmWmmmm#W#WQQQQQQWQWQmmXXXXXZXZZZZZZZZZZZZZZ#ZZZZZZ#ZZZ#ZZZ#Z#Z#Z#ZZZ#ZQ
+                                   WZ#Z#ZZ#ZZ#ZZZZZ#Z#ZZZZZZZZZZZZZZZZZZZXZXZXXXXmmQQQQQQQWQW$WmmmmWmWWWWBm##X#ZZZZXXZZZZZ#ZZ#ZZZZZ#ZZ#Z#Z##=i]#ZZZZ#ZZZ#ZZ#ZZ#Z#ZZ#ZZZZZ#XZ####BBWWWWWmmmm#WUWWQQQQQWWmmZXXXXZXZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZZ#ZZ#Z#Z#Z#
+                                   WZ#ZZZ#ZZ#ZZZ#Z#ZZZZZZZZZZZZZZZZZZXZZXXXXXXmmQQWQQQQWW$mm#mWmWWWBB###XZXZXZZZZZZZ#ZZ#ZZZZZZZZ#ZZZZ#ZZZZZ#=v]#Z#Z#ZZ#ZZZ#ZZ#ZZZZ#ZZZ#ZZZ#ZZZZZZ#Z##mmWWWWWmmmmB#WQWQQQQWQmZXXXZXXXZXZZZZZZZZZZZ#ZZZZZ#ZZ#Z#ZZ#ZZZZZ##
+                                   #Z#ZZ#ZZ#ZZ#ZZZZZZZZZZ#ZZZZZZZZZZXZZXXXmmQWQQQQQQW#mmmmWWWWmWP??4SZZXZZZZZZZZZZ#ZZZZZZZ#Z#ZZ#XZ#ZZZZ#Z#Z#saJZ#ZZZZ#ZZ#ZZZ#ZZ#Z#ZZ#ZZZ#ZZ#Z#Z#ZZZZZ##?Y?mWWWWWmW#m#WWQWQWWWQmmXXXZXZXZZZZZZZZZ#XZZZZ#ZZZZZZZ#ZZZ#ZZ##
+                                   ##ZZ#ZZZZZZZZZZZZZ#ZZZZZZZZZZZXZXXXXmmWWWWQQQWW#m#mWWWWBm#ZZXXL)c)SXZZZZ#Z#ZZZZZZZ#ZZ#ZZZZZZZZ#ZZ#Z#ZZZZZZXZ#ZZZ#ZZZZZZ#ZZZ#ZZZZ#ZZ#ZZ#ZZZ#ZZZ#Z#Z?|iq#ZZ##mmWWWWmmmm#QQQQWWWQmmXXZXXXXZXZZZZZZZZZZZZZZ#ZZ#ZZZ#ZZ#Z#
+                                   ###ZZZZZ#ZZZZZ#ZZZZZZZZXZXZXXZXXXmmQWWQQQQW$##mWmWWBm##XZZZZZZZ#/{>?ZZZZZZZZZZ#ZZ#XZZZZ#ZZ#ZZ#XZZZZZZ#ZZ#ZZ#ZZZ#ZZ#Z#Z#ZZ#ZZZ#Z#ZZZZZ#ZZ#ZZZ#ZZ#7(lsJ#ZZ#ZZZ###mBWWWBmmmBWWQQQQQQQmZXXXXXZXZZZZZZZZZZZZZZZZZZZZZZZ##
+                                   Q#ZZZZ#ZZZZZZZZZZZZZXZZXZZXXXmmmQQQQQQQWB#m#BWWWWm##XZXZZZZZZZZZXL%i)4X#ZZZZZZZZZZZ#Z#ZZZZZZ#ZZZ#Z#Z#ZZZZZ#ZZZ#ZZ#ZZZZZZ#ZZ#ZZZZZ#Z#ZZZ#ZZ#ZZ#Z?<}a#Z#Z#ZZ#ZZZZZ###WWWWWmmmDQWQQQQWQQmmXXXXZXXZXZZZZZ#ZZZZZZ#ZZ#Z#ZQ
+                                   Qm##ZZZZZZZZZZZZZZZXZXXZXXmmQWWQQQQQQW#m#WWWWBm#ZXXXZZZZZZZZZZZZZZdXXXZZZZ#ZZZZZ#ZZZZZZ#ZZ#ZZZZ#XZZZZZZ#Z#ZZZ#ZZZZZ#Z#Z#ZZ#ZZ#Z#ZZZZ#Z#ZZ#ZZ#ZZZm#ZX#ZZZZ#ZZ#Z#Z#ZZZ##BWWWmmmm#QWQQQQQWQmmXXXZXZZXZZZZXZZZZZZZZZmZmQ
+                                   QQ#Z#XZZZZZZZZZXZXXXXXXmmQWWQQQQQQQW##mWWWmm##XXXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZ#ZZZZZZZZZZ#XZ#Z#Z#ZZZZZZ#ZZ#Z#ZZZZZZZ#ZZZZZZ#Z#ZZZZZ#ZZ#ZZZ#XZZ#ZZ#Z#ZZ#ZZ#ZZ#Z#ZZZ##WWWWmmm#QQQQQQQQQQQmZXXXZZXZZZZZZZZZZZ#X#WQ
+                                   QQWm#ZZZZZZZXZXXXXXXmQWQQQQQQQQQW$m#mWWWm##XXXZZZXZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZ#XZ#Z#Z#ZZ#ZZZ#ZZZ#ZZZ#Z#ZZZ#ZZZ#Z#Z#Z#ZZ#Z#Z#ZZZZ#Z#ZZZ#ZZm!!Z#ZZ#ZZ#ZZ#ZZ#ZZ#Z#Z#Z#Z#Z#mWWWWmmdWWQQQQQQWWQWmmXXXXXXXZZZZZZ#Z#QWQ
+                                   QQQQm##ZXZXZXXXZmmQQQQQQQQQQQWW$mmBWWWm##XZZZZZXZZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZ#XZZZZZZZZZ#XZ#ZZZZ#ZZZZ#ZZZ#ZZZZZ#ZZZ#ZZZZZZ#Z#ZZZ#a'??!'q#ZZ#ZZ#ZZ#ZZ#ZZ#Z#Z#ZZ#Z#Z#ZZ#mWWWWmm#WWWQQQQQQQQWWmmXXZXZXZXZ#ZmWWQQ
+                                   QQQQQQm##ZXXXmmQWWQQQQQQQQQQW#mmBWWWm#XXXXZZZZZZXZXZZZZZZZZZZZZZZZZZZZZ#Z#ZZZ#ZZZZZZZZ#ZZ#ZZ#ZZZZ#ZZ#ZZZZ#Z#ZZ#ZZZ#Z#ZZZ#ZZZ#Z#Z#ZZZZ#ZZZZF(qwp?!4ZZ#ZZ#ZZ#ZZ#ZZ#ZZ#ZZ#Z#ZZ#Z###mWWWmm#WWQQQQQQQQQQQQQmZXXXm#mWWQQQQ
+                                   QQQQQQWQm#mQWQQQQQQQQQQQWQW$mmBWWWm#XXXZZZZZXZZXZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZ#Z#ZZZZ#XZ#ZZZ#ZZZ#ZZZ#ZZZZZ#ZZ#Z#ZZZ#ZZZ#ZZZZZZZ#Z#ZZ#P!qJ#ZX#LdZZ#Z#ZZ#ZZ#ZZ#Z#Z#Z#Z#ZZ#Z#ZZZ##WWWWmm#WWQQQQQQQQQQQWWQmmmmWWQQQQQ
+                                   QQQQQQQWWWWQWQQQQQQQQQWQWWm#mWWWm#XXXXXZXZZZZZZZZXZXZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZ#XZZZ#Z#XZ#XZZ#ZZZ#ZZZ#ZZ#Z#ZZZ#ZZZZ#ZZ#Z#ZZ#Z#Z#ZZZZZm!-a#Z#Z#ZZZZ#ZZZZ#ZZ#ZZ#Z#Z#ZZ#ZZ#Z#Z#Z#Z#Z##BWWW#m#WQQQQQQQQQQQQQQQWQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQWQW##mWWWmmXXXXXZXZZZZXZZZXZZXZZZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZZ#ZZZZZZ#XZ#ZZZZ#ZZ#ZZZZZZZZ#ZZZ#Z#ZZ#ZZZZ#ZZZZ#Z#Zm!(a#ZZZZZZZZ#ZZ#Z#ZZ#ZZ#ZZ#ZZ#Z#Z#Z#Z#ZZZ#ZZZ#Z#mWWWmm#WWWQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQWWm#WWWmmF=n)!!#XXZXZZZZZZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#XZ#ZZ#ZZZ#XZZZ#ZZZZZZ#Z#Z#ZZZ#ZZ#ZZZZZ#Z#ZZ#Z#ZZZFLqd#XZ#Z#Z#Z#ZZ#ZZZ#ZZ#ZZ#ZZ#Z#ZZ#ZZ#ZZ#Z#Z#2??%%d#mWWWmm#WQQQQQWQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQWQ$m#BWWm#XXZGsapns?!!ZXZZXZXZZXZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZ#ZZZZZZZZZ#XZ#Z#XZ#Z#Z#ZZZZZZ#ZZ#ZZZZ#Z#ZZZZ#ZZZZZ^qd##ZZ#ZZZ#ZZZZ#ZZ#ZZ#ZZ#ZZ#Z#Z#Z#ZZ#Z##2?![%%aau##ZmmWWWm#mWWQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQWW###WWW##XXZXZXXXZ6agdZZZZZZZZXZZZZZZZZZZZZ#ZZZZZZZZZZZZZ#ZZZZZZ#ZZ#Z#ZZZ#ZZZZ#ZZZZZZZ#Z#ZZ#ZZZ#Z#ZZZZ#Z#ZZZm!|wZZ#ZZ#ZZ#ZZZ#Z#ZZ#Z#ZZ#ZZ#ZZ#Z#ZZZ#Z#ZZZ#aauZ#ZZZZ#Z###BWWW#m$QWQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQW#mBWWmm#SXXXZXXXXZXXXZZZZZXZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZ#Z#ZZ#ZZZZ#ZZ#ZZZZZ#Z#ZZZZZ7,aZZZZZZ#ZZ#ZZ#ZZZZZ#ZZZ#ZZ#ZZ#ZZ#ZZ#Z#Z#Z#ZZZZZZ#Z#Z#Z#ZZ##WWWBmm$QQQQQQQQQQWQQQWQQQ
+                                   QQQQQQQQQQQQQQQQQW##WWWWm#SXXZXZXZZZXXXZZZZZZXZZZZXZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZZZZZ#ZZ#Z#ZZ#Z#ZZ#Z#ZZZZZ#ZZZ#ZZZ#ZZ#Z#ZZZZZ#ZF5qZZZZ#Z#ZZZ#ZZ#ZZ#Z#Z#Z#ZZ#ZZ#ZZ#Z#Z#Z#ZZ#Z#Z##Z#Z#Z#Z#ZZ#ZZZ#mWWW#mWWQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQWW$#BWWmmXXXXXXZXZZXXZZZXZZZZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZZ#Z#ZZZZ#ZZ#ZZZ#ZZZZ#Z##2(jdZ#Z#ZZZZ#Z#ZZ#ZZ#ZZZ#ZZZ#ZZ#Z#Z#ZZ#Z#ZZ#Z#ZZ#ZZ#ZZ#ZZ#Z#Z#Z##ZmWBWW##$WQQQQQWQQQQQQQQQ
+                                   QQQQQQQQQQQQQQWQG#mWWBm#XXXXXZXZXXZXZXXZZXZZZXZZZXZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZ#Z#ZZ#ZZ#ZZ#Z#ZZZZZ#ZZZ#ZZ#ZZZ#Z#ZZXN`J#ZZZZZ#Z#ZZZZZ#ZZZZZ#ZZZ#ZZ#ZZ#ZZZ#Z#ZZ#Z#Z#Z#Z#ZZ#ZZ#Z#ZZ#Z#ZZ#Z#BWWBmm$QQQWQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQWW#mWWWm#XXXXXZXXXZXXZXZZXZZZZZXZZZZXZZZZZZZZZZZZ#ZZZZZZ#ZZZ#ZZ#ZZZ#ZZZZZZZZZZ#XZZZZZZ#ZZ#ZZ#ZZZ#ZZ#ZZZZX?|u#ZZZ#Z#ZZZZ#Z#Z#ZZZ#Z#ZZ#Z#Z#ZZ#Z#Z#ZZ#Z#Z#ZZ#ZZ#Z#Z#Z#Z#Z#Z#ZZ#Z#ZZmWWWB#UWQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQWdmWWWm#XXXXXXZXZXZXXZXZXZZXZZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#XZZ#ZZ#Z#ZZZZ#Z#Z#ZZZ#ZZZZZ#ZZZ#ZZ#ZF^q#ZZ#Z#ZZZ#Z#ZZZZZZZ#ZZ#ZZ#ZZZZZ#ZZZ#ZZZ#Z#Z#ZZ#Z#Z#ZZ#ZZ#ZZ#Z#Z#Z#ZZ###mWWWmm#QQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQAmWWWmm#XXXXZXXZXXZXXZXZXZXZZZZZZZXZZZXXm!"?!?^qJZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZ#ZZZZZZZZ#ZZZZ#Z#ZZ#ZZZ#e'QJ##Z#ZZZZ#ZZZZ#Z#Z#Z#ZZ#ZZZZZ#Z#ZZ#Z#ZZ#Z#ZZ#ZZ#Z#Z#Z#ZZ#ZZ#Z#ZZ#Z#Z#Z#ZZ#mWWBm#$WQQQQQQQQQWQQ
+                                   QQQQQQQQQQQQWW#mWWBW#SXXXXXXZXXZXXXZXZZXZXZZ!!!!?^|==;QQi+=<a#XZZZZZZZZ#ZZZ#ZZZZ#ZZZZ#Z#ZZZZZZ#ZZ#Z#ZZ#Z#ZZZZ#ZZZ#?<a#ZZZZZZ#Z#ZZ#Z#ZZZ#ZZZ#ZZZ#Z#Z#ZZ#ZZ#Z#ZZ#Z#Z#Z#Z#ZZ#ZZ#Z#Z#Z#Z#Z#ZZ#Z#ZZ#ZmWWWmm#QWQQQQQQQQQQQ
+                                   QQQQQQQQQQQQW##mWWBmXSXSXXXXZXZXZXXZZZagIv|||+Q-++=====|ivgZXXZZZZZZZZZZZZZZZZZZZZZZ#XZZZZ#ZZ#ZZZZZZZ#ZZZZ#Z#ZZZ?XaX#ZZ#Z#Z#ZZZZ#ZZZZ#ZZZ#ZZZ#ZZZZ#ZZ#Z#ZZZ#Z#ZZ#Z#ZZ#ZZ#Z#Z#ZZ#Z#ZZ#Z#Z#Z#ZZ#ZZmmWWWmmWQQQQQQQQWQQQ
+                                   QQQQQQQQQQQWQdmWWWmmXXXXXXXZXXXZXXXZXXX#ZZagc=<|=|=+===+iiv>|)??!!!!"?!mZ#ZZZZZ#ZZZ#XZZZ#ZZZZZZZ#Z#Z#ZZZZ#ZZZ#e(aZXZZZ#ZZZZZZ#Z#ZZ#Z#ZZ#ZZ#Z#ZZ#Z#ZZ#ZZZ#Z#ZZZZ#ZZ#Z#ZZ#Z#Z#ZZ#ZZ#Z#Z#ZZ#ZZ#Z#Z##mWWBm#mWQQQQWQQQQQQ
+                                   QQQQQQQQQQQQW#mWWWm#XXXXXXXXXZZXXZXZXZZXZXZZZZhap}v|===)<JXXZ#ogagagaa;+++=|>|3???!!!"Sm#Z#ZZ#ZZZZZZZZ!?qgaaa/<"ZZ#ZZ#ZZ#Z#Z#ZZZZ#ZZZZ#ZZ#ZZZZ#ZZZ#ZZ#Z#ZZZ#Z#Z#Z#Z#ZZ#Z#Z#ZZ#Z#Z#ZZ#Z#Z#Z#Z#Z#ZZmWWWB##WQWQQQQQQQQQ
+                                   QQQQQQQQQQQW##mWWBmXXXSSXXXZXXXZXXXXZXZZXZZZZZXXXZ6gap+;il4ZZZZ#ZZZZZZZ#ZZ#X#hagagasaag;Q|++>=?!?!!!?(jd##ZXXZh/)mXZ#ZZZZZZ#ZZ#Z#ZZ#Z#ZZZZZ#Z#ZZ#ZZ#ZZ#ZZ#ZZ#ZZ#Z#ZZ#Z#Z#ZZ#Z#ZZ#ZZ#Z#Z#Z#Z#ZZ#Z##BWWmmZWQQQQQQQQQQQ
+                                   QQQQQQQQQQQQ##BWWBBXSSSSXXXXXXXZXXZXZXZXZZZZZZZZZXXZZZ#aac|4XZZZZZZZZZZZZZZZZZXZZZZZXX#ZZ#ZZ##oagagaai]ZZZZZ#ZZ[#ZZZZZ#Z#Z#ZZZZZZ#ZZZZZ#Z#ZZZZZ#ZZ#ZZ#ZZ#Z#Z#Z#ZZ#Z#ZZ#Z#Z#Z#ZZ#Z#Z#ZZZXXXXXXXXXX$mWWWmZQQQQQQQQQQQQ
+                                   QQQQQQQQQQQWW#mWWWmagaagaagaaadXXXXZXZZZZXZZZXZZXZZZZZXXXXZo#XZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZZ#Z#ZXLp)!4#mFM'qJ#Z#Z#ZZZ#ZZ#Z#Z#ZZ#Z#ZZZ#Z#Z#ZZZZZZ#ZZ#ZZZZ#ZZZ#Z#ZZ#Z#ZZ#ZZ#Z#ZZ#Z#ZaaaaaaaaaagjWWWmm#WQQQQQQQQQQQ
+                                   QQQQQQQQQQQWB#mWWBmXZXXXXSXXXSXXZXXZXZXZXZZZZZZXZZXZZZZZZZZ#XZZZZZZZZZZ#ZZZZ#ZZZZZZZ#ZZ#ZZ#ZZ#ZZZZZZZ#Z#LggagJWmj4ZZZZZ#ZZZ#ZZZ#ZZ#ZZZ#Z#ZZZZZ#Z#Z#Z#ZZZ#Z#Z#ZZ#Z#Z#Z#ZZ#Z#Z#ZZZ#Z#ZZ#Z#ZZZXZZZZ#WmWWWmZQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQ##mWWWm#XXXXXXXXXXXXZXXZXZXZZXZZZXZZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZ#XZZZZZZZZZZ#Z#Z#ZZZZ###Z##ZZZ#J!Z#ZZ#Z#ZZ#ZZZ#ZZ#ZZZZZ#Z#ZZZZZZ#ZZ#ZZ#ZZ#ZZ#Z#ZZ#ZZ#Z#ZZ#Z#Z#Z#Z#Z#ZZ#Z#Z#Z#X#mWWmmmWWQQQQQQQQQQ
+                                   QQQQQQQQQQQWW#mWWWmmSXXXXXXXZXZXZXXZXZZXZZZZZZZZXZZXZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZ#XZZ#ZZ#ZZ#ZZZZZZZ#Z#ZZZZ#ZZZZ#ZZZLFZZZZZZ#ZZ#ZZZ#ZZ#Z#ZZZZ#Z#Z#ZZZ#Z#ZZZ#ZZ#Z#ZZ#ZZ#Z#Z#Z#ZZ#ZZ#ZZ#Z#Z#Z#Z#Z#ZBWWWmmmWQQQQQQQWQQQ
+                                   QQQQQQQQQQQQWZmmWWBmXXSXXXXXXZXXZXXZXZXZZXZZXZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZ#XZZZZZZZ#ZZ#Z#ZZZZ#ZZZZZ#ZZZ#Z#ZLZmZ#ZZZZZ#Z#ZZZZZZ#Z#ZZZZZZ#Z#ZZZ#Z#ZZ#ZZ#Z#Z#Z#Z#Z#ZZ#ZZ#Z#Z#Z#Z#ZZ#ZZ#Z#mWWWm#mQQQQQQQQQQQQ
+                                   QQQQQQQQQQQWQ#mBWWWmm2XXXXXXZXZXXXXZXZXZXZZZZZZZZXZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZ#ZZZ#ZZZZZZZZZ#ZZZZ#Z#ZZ#Z#ZZZZ#Zh%4ZZ#Z#ZZZZ#Z#Z#ZZZZ#Z#Z#ZZZ#Z#ZZZ#ZZ#Z#ZZ#Z#Z#ZZ#Z#ZZ#Z#Z#Z#ZZ#Z#Z#Z#ZmWWWmmmWQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQXmWWWm#XXSXXXXZXXZXZXXZXZXZZZZZZZXZZZXZZZZZZ#ZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZ#ZZZZZZZZ#ZZ#Z#ZZZ#Z#ZZZZ#ZZZZ#Z#ZZZmXd?#ZZZ#Z#ZZZZZZ#Z#ZZZZZZ#ZZ#ZZ#Z#Z#ZZ#Z#Z#ZZ#Z#ZZZ#Z#ZZ#ZZ#Z#ZZ#ZZ#ZmmWWBm#$WQQQQQQQWQQQQ
+                                   QQQQQQQQQQQQQQ#mmWWWmmSXXXXXZXZXZXXZXZXZZZZZXZZZXZXZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZ#ZZZ#Z#XZZZ#Z#ZZ#Z#ZZZZZZZZZ#aXXZ#ZZZ#Z#Z#ZZZZ#Z#Z#Z#ZZZ#ZZZ#ZZ#ZZ#ZZ#Z#ZZ#Z#Z#ZZ#Z#Z#ZZ#Z#Z#ZZmBWWmm#WQQWQQQWQQQQQQ
+                                   QQQQQQQQQQQQQQWm#mWWmmZXXXXXZXXZXXXZXZXZXZXZZZZXZZZZZZZZZZZZZZZZZZZZZZZZ#ZZ#ZZZZZZ#ZZZ#ZZZZZZZ#ZZZ#ZZZZZ#Z#ZZZZZZZZZ#Z#Z#ZZZZZZLFmX#ZZZZ#ZZ#Z#ZZZZZ#ZZ#Z#Z#Z#Z#Z#Z#Z#Z#Z#Z#Z#ZZ#Z#Z#ZZ#Z#Z#Z#ZmBWWBm#mQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQWWXmWWWWmXXXXXZXZXXXZXZXZXZZZZZZZZXZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZ#XZZZZ#ZZZZZ#ZZ#Z#ZZZZZZ#Z#Z#Z#ZZZZZ#Z#Z#ZZ#624ZZ#ZZZ#ZZZZ#Z#ZZZ#ZZZZZ#ZZZ#Z#Z#Z#ZZ#Z#ZZ#ZZ#Z#ZZ#Z#Z#ZZZmmWWWmmmWQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQm#mWWWmmXXXXZXXZXZXXZXZZXZZZZZXZZZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZ#ZZ#ZZZZZZZ#Z#Z#ZZZ#ZZZZ#Z#ZZZZZZZ#ZZZ#J4XZ#ZZZ#Z#ZZZ#Z#ZZ##Z#Z#Z#ZZ#ZZ#Z#Z#ZZ#Z#Z#ZZ#Z#Z#Z#Z#ZmmWWWm#qWQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQWQQm#mWWWmmXZXXZXZXXXZXZXZXZZZZZZZXZXZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZZ#XZZZ#ZZ#ZZZZZZZ#Z#Z#ZZZZZZZ#ZZZ#Z#ZZZ#Z#Z#Z#ZZZZZZZJ?mZ#ZZZZZ#ZZZ#Z#ZZZ#ZZ#Z#Z#Z#ZZ#Z#Z#Z#ZZ#Z#Z#Z#Z#ZZ#mmWWWmmmWQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQ#mBWWmmXXZXXZXXXZXZXZZZZZXZZXZZXZZZZZZZZZZZZZZ#ZZZZZZZZ#ZZZZZZZZZZ#ZZZZZZZ#Z#ZZZZZ#ZZ#Z#Z#ZZZ#ZZZZZ#ZZZZZ#ZZZ#Z#Z#Z#XLPZZ#Z#ZZZ#ZZZZ#Z#ZZ#ZZZ#Z#Z#Z#ZZ#ZZ#Z#ZZ#ZZ#ZZ#ZZ##WWBmmmQQQQQQQQQQWQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQWm#mWWWmmZXXZXZXZXXZXmXXZZZZZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZ#XZZZZZZ#ZZZZ#Z#ZZZZZZZZZZ#ZZ#Z#Z#ZZ#Z#ZZZ#ZZ#ZZZZZZ#X67X#ZZ#ZZ#Z#ZZZZ#Z#Z#Z#ZZ#Z#Z#Z#Z#XmZZ#Z#Z#Z#Z#mmWWBm#$QWQQQQQQQQQQQQQQWQQ
+                                   QQQQQQQQQQQQQQQQQWQWm##mWWWmmXXXZXXe?(|>{XZZZZZXZZXZZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZZZZZZ#Z#Z#ZZ#Z#ZZ#ZZZZZZ#ZZZ#Z#ZZ#ZZ#Z#Z#ZZZ#ZJ4ZZZ#ZZ#Z#Z#ZZ#ZZ#Z#Z#ZZ#ZZ#ZZ(=3?!Z#ZZ#ZZmmWWBW#mWWQQQQQQQQQWQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQZmWWWBmme!!(vqagdZZZZZZXZZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZ#ZZZZZZZZZZ#Z#Z#ZZZZZZ#ZZZZ#ZZ#Z#Z#ZZ#ZZZZZ#ZZ#ZZZ#ZZ#ZZ#Z#j$ZZZ#ZZZ#ZZ#ZZ#Z#Z#Z#Z#Z#Z#Z##aspC\)??mmWWWBm#mWQQQQQQQQQWQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQWQm##WWWBmagdGXXZZXZXZZZZZXZZXZXZZZZZZZZZZZZZZZZZZZZZZ#ZZZZ#XZZZZZZZZZ#ZZ#ZZZZZZ#ZZ#ZZZ#Z#ZZZZZZ#ZZ#ZZ#Z#ZZZ#ZZ#ZZZZZ#ZZZ#ZaaZ#ZZ#ZZ#ZZ#Z#ZZ#ZZ#ZZ#Z#ZZ#ZZZ###aajmWWWmmmQWQQQQQQWQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQWQm#mWWWmmZXZZZXZXZZZZXZZZXZZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZZZZZZZZ#Z#ZZZ#ZZZ#ZZZZ#Z#Z#ZZZZZ#ZZZ#Z#ZZZZZ#Z#ZZZ#ZZZ#XZZ#ZZ#ZZ#Z#ZZ#Z#Z#Z#Z#ZZ#Z#Z#Z#ZZmmmQWmm#mWQWQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQWQQQQQQQWWm#mBWWWmmZXXXZZZZZZZZZXZZXZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZZ#XZZ#XZZZ#ZZ#ZZZZZZ#Z#XZ#ZZZZ#ZZZZ#ZZ#Z#ZZZ#ZZZZ#Z#Z#ZZZZ#ZZ#Z#ZZ#ZZ#ZZ#ZZ#ZZ#Z#ZZ#ZZ#Z#Z#ZZ#ZZ#mmmWWWm#mQWQQQQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQm#mWWWWmmZXZXZZZXZZXZZXZXZZZZZZZZZZZZZZZZ#ZZZZ#ZZZZZ#ZZZZZZ#ZZZZZZZ#Z#Z#ZZZZ#ZZZ#ZZZ#Z#ZZZZZZ#Z#ZZ#Z#ZZZZZZ#Z#ZZ#ZZZZZ#Z#ZZ#Z#ZZ#Z#ZZ#Z#Z#Z#Z#ZZ#ZZmmmWWWm#mmQWQQQQQQQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQWQQQQQWWm#mBWWBmmmXZZZZZZZZXZZZZZZZZZZZZZZZZZ#ZZXZZZZZZZ#ZZZZ#ZZZZZZZ#Z#ZZZZZZZ#ZZZZZ#ZZ#ZZ#ZZ#Z#Z#ZZZZ#ZZZ#Z#Z#ZZZZ#ZZZ#Z#ZZZZ#ZZ#ZZ#Z#ZZ#Z#Z#Z#ZZ#Z#ZmmWWWWmm#mQQQQQQQQQQQQQQQQQQQWQQQQQQWQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWm$#mWWWmmmXXZZZXZZZXZXZZZZZZZZZZZZZZZZZZZZZZZZZZZZ#XZZ#ZZZZZZZZZ#Z#Z#ZZ#Z#ZZZ#ZZ#ZZZZZZ#ZZ#Z#ZZ#ZZZZZZ#Z#ZZZ#ZZZZZ#Z#ZZ#ZZ#Z#ZZ#Z#ZZ#ZZ#Z#ZmmWWWmmm$QWQQQQQQQQQQQQQQQQQWQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQWQQQQQQQQQQQWWm#mWWWWmmmZXXZZXZXZZZZZZZZZZZZZZZZZZZZZ#ZZZ#ZZZ#XZZ#XZZZZ#ZZ#ZZZZZZZ#XZZZ#ZZZ#ZZ#Z#Z#ZZZZZZZ#ZZ#Z#Z#ZZZZ#ZZ#Z#Z#ZZ#Z#ZZ#ZZZ#ZZ#Z#Z#Z#Zm#mWWWmmmmQWWQQQQQQQQQQQQQQQQQQQQQQQQQQQWQQQ
+                                   QQQQQQQQQQQQQQQQWQQQQQQQQQQQWQQQQQQQmm##WWWWmmmZXZZZXZZZZZZZZZZ#ZZZZZZZZZZZZZZZZZZZ#ZZZZZZZZZZZZZ#Z#Z#ZZZ#ZZZ#ZZZ#ZZZZZZ#Z#Z#ZZZ#ZZZ#ZZZ#Z#Z#ZZZZZ#ZZZZZ#ZZ#Z#Z#ZZZ#ZmmmWWWWmm#QWQWQQQQQQQQQQQQQQQQQQQWQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQBWWWm##mWWWWmmmXXZZZZZZZZZZZZZZP??SZZZZZZZZZZ#ZZZZZZ#ZZ#ZZ#ZZ#ZZZZZZZZZZZ#ZZ#ZZZ#Z#Z#ZZZZZ#Z#ZZ#ZZZ#ZZZZZZZ#???mZ#Z#Z#ZZ#ZZZZ#Zmm#BWWWmm#mmQW$WQQQQQQQQQQQQQQQQWQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQWQQQQB$m###WWWQm##mWWWWmmmmSZZZZZZZZZF(|<JZZZZZZ#ZZZZZZZ#ZZZZZZZZZZZ#XZ#Z#Z#Z#ZZZZZ#ZZ#ZZZZ#ZZ#Z#ZZZZZ#ZZ#ZZZ#Z#Z#ZZ#pn<?X#ZZZ#ZZ#Z#mmmWBWWmm#mmQQW###mZWWQQQQQQQQQQQQQQQQQQQQQQQQQQWQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQBB#m####mmmWWWWmQZ#mWWWWmmmmZZZZZZ?=:q#Z#ZZZZZZZZZ#ZZ#XZZ#ZZZZZ#ZZZZ#ZZZZZZZZZ#Z#ZZZZZ#Z#ZZZZZZ#Z#Z#ZZ#ZZ#ZZZ#ZZ#Z##Lz=)4Z#ZZ#mmmWmWWWmm#mQWQQWmmmmm##mq#BWWQQQQQQQQWQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQWQQQWQW#m#####mmWBWWWWWWQWQQm###BWWWWBWmm2'=qJ#ZZZXZZZ#ZZZZZZZZZZZZZZZZ#ZZ#ZZZZ#Z#ZZ#ZZZZZZ#Z#ZZZZZ#Z#Z#ZZZ#ZZ#ZZZZZ#ZZZ#ZZZZ##a+:?mmmWmWWWBW##mQWQWWWWWQWWWmBm####m#WWQQQQQQQQQQQQQQQQQQWQQQQQQ
+                                   QQQQQQQQQQQQQQQQWQQQQQQW#mm####mBWWWWWWWBm###WWQWQWQm##mmWWWWWWmmmmXZZZZZZZZZZZZ#ZZ#Z#ZZZZZZZZZZ#Z#ZZZZ#m!!4Z#ZZZZ#Z#Z#ZZZ#ZZ#ZZZ#ZZ#Z#ZZ#Z#ZZ#Z#ZmmmBWmWWWBm##mmQQQWQW####BWWWWWWWWmBmm##mZWWWQQQQQQQQQQWQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQQQQQB##mZm#mmWWWWWWWWmmm##mmQWQQQQQWQWQQm##mmWWWWWBBmmmmZZZZZZ#ZZZZZZZZZZZ#ZZ#ZZZZZZ#Z#X#:+]Z#Z#Z#ZZZZZZ#ZZZ#ZZ#ZZZ#ZZZZ#ZZZ#mm#mWWmWWBWm##mmWQQQQQQQQQQQmZ##mmWWWWWWWWmBm###mZWWQQQQQQQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQQQWBBmZm##mWBWWWWWWmBmm#mmQWQQQQQQQQQQQQQWQQQQmmm##BWWWWWBWWmmmmmZZZZZZZZ#ZZZZZZZZ#Z#ZZZZZ#=i]#ZZZZZZ#Z#Z#ZZ#ZZZZZ#Z#ZZ#mmmmWWWBWWWWmm##mmQWQQQQQQQQQQQQQQQQQQmm###mBWWWWWWWmWm###m#UWQQQQWQQQQQQQQQQQ
+                                   QQQQQQQQQQQQQQW$mmZ#mWBWWWWWWWmmm###mQWQWQQQQQQQQQQQQQQQQQQWQQQQWmmm##mmWmWWWWWWWBWmmmmmmmZZ#ZZ#XZZZ#ZZ#m=:]#ZZ#Z#ZZZZ#ZZZ#mmmmmmmWBWWWWWWBBmmm#$mmQQQQQQWQQQQQQQQQQQQQQQQQQQQWmmZ##mmWWWWWWWWmB###m#WWQQQQQQQQQQQQQ
+                                   QQQQQQQQQQQW$mZm#mWWWWWWWWBBm###ZmQWQWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWQmmQm###mmBWWWWWBWmWBWWmWmWmBmmmmmmaawmmmmmmBWBWmWWWWmWBWWWWBWmmW#U#mQmmQQWQQWQQQQQQQQQQQQQQQQQQQQQQQQQQQWQQm#####mmWWWWWWWBBmmmm#$QQQQQQQQQQQ
+                                   QQQQQQQQQQQmm#BWWWWWWWBBmm###ZmmQQQWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWQWQQmmmm#U##mmmBmWBWWWWWWWWWWWmWWBWWWWWWBWBWmBmmBmm###mmmmQWWWWQWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWQWQmZZ###mmWWWWWWWWmmmmQQQQQQQQWQQ
+
+
+3、sl命令
+    你会看到一辆火车从屏幕右边开往左边……
+    安装
+        sudo apt-get install sl
+    运行
+        sl
+
+                                                       (  ) (@@) ( )  (@)  ()    @@    O     @     O     @      O
+                                                     (@@@)
+                                                 (    )
+                                              (@@@@)
+
+                                            (   )
+                                         ====        ________                ___________
+                                     _D _|  |_______/        \__I_I_____===__|_________|
+                                      |(_)---  |   H\________/ |   |        =|___ ___|      _________________
+                                      /     |  |   H  |  |     |   |         ||_| |_||     _|                \_____A
+                                     |      |  |   H  |__--------------------| [___] |   =|                        |
+                                     | ________|___H__/__|_____/[][]~\_______|       |   -|                        |
+                                     |/ |   |-----------I_____I [][] []  D   |=======|____|________________________|_
+                                   __/ =| o |=-~~\  /~~\  /~~\  /~~\ ____Y___________|__|__________________________|_
+                                    |/-=|___|=    ||    ||    ||    |_____/~\___/          |_D__D__D_|  |_D__D__D_|
+                                     \_/      \O=====O=====O=====O_/      \_/               \_/   \_/    \_/   \_/
+
+
+4、aafire命令
+    在你的终端放一把火如何。
+    安装
+        sudo apt-get install libaa-bin
+    运行
+        aafire 
+..........................................................................................................................................................................................................................................................................................
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+                                                                                                                                           `  "
+
+                                                                                                                                       _, "[  ]  "#  __
+                                                                                                                                       _  _6 .J_ _m  _,
+                                                                                                .   ,                              .,  _  _, _ _ __  .,  _
+                                                                                            ~~'       "~~                             ""~ _L,"\' _#,"!"
+                                                                                         _   ,  .   ,  _, __  .,  _         .,  _  ., _ _.__ _ _., , _,  _
+                                                                                            ._  _,  [  ][  m  ][ ~"~           ._, "~`-m'./`,"L' 4J ""~
+                                                                                     .,      , _ _.,.,_ _., ,_ __, __ .,, _ ,_ ..,.,.,_ _.,.,_ __, ,,,.., _ .,
+                                                                                         m   [ -_'.F4,m ]][ [# ]LF"6J~4,[ m] ][[ m][][# m][][# #][ [.76 \_' ][ ~m~]mW[
+                                                                                         _ .,.,._,      -   '  -`                                          .___, __,_,._,                       _
+                                                                              ~~     "~  m -6J`# m]#m[#m#       ]###    mW#           m##       ]##[mWm]#### ]#[ # J`  m  ~~                    "
+                                                                              -`     "`  "`    -~' "" -`'        ""'    ""'           -~'        "" -`" ""'""~ "~'- !'""` -`
+                                                                       "`  W "4[  W  ][ 4.F][][# #_WJ,                      ]'  "  ]'  ]   '  ]   "  ]'  "    .mJw] ][4/` ][  W   [  ]   [ "4["6_["4[  W
+                                                                       -` ""`-~"`-~' "~  `  -' -~' ""                       ]'  "  ]'  ]   '  ]   "  ]'  "     ""'-~" '"~ "~         "` "" -~"  ' -~"`-~'
+                                                                    ~  ]["L.F-6" [ #] ][W m][][][[     ]'  "      "      "  ]'  X  ](  ]  gL, ]  gX,jJs  X  ]'    ] ][[ #] ][~7'"4~ W m][][][[][ [m ]#[ #4,J` W  "`
+                                                                       -' -~ " '`-"' '" " ""'"`-''     "' ]"'    ]"'    ]"' ""  "  ]'  ]      ]          "  ""    -""`' " '" "-"-`'`" ""'-'-''-`"`" -~' " ~`  "
+                                                                       .,"[ F \/`[ #] ][JJ6 gg,jgg  ,  j,  X  j,  g  ](  X  ](  X  )(  ]   [ jgg gg,jgg  X  j, ggg] ][\_7"_J`4_F][][J66 gg,jgg gg,J6#_#JLW ]["_~ ][  _
+                                                                       -` -~ "'~'' "" ]["~" "!']""  '  ]'     ]'  "                           ]   "  ]'     ]' "!"" ][' ~- -`" ""']["~" "!']"" "!'~"~"~"~" -'""" -`  "
+                                                                           _ ] ][[ m.~4,        g,  [  )(  X  j,  g  j,  g  ](  X  jg         g, jg  ]( jg,   .___]"4,[ #] ][J~L.__,        g, jg,   .___J"4,[ #"\7' m  .,  ]
+                                                                           " -\" \_7"_J'        j   [  )(  X  ]'  "  ]'  "  )(  X  j,         j   g  )(  g    "#4e]_J`\_7"_J'4_7"##'        j,  g    -m474_J`L_7."_,.m_ "'
+                                                                          ._, 47 "_~] ][J"6            g, jg, )(  g  j,  g  j,  X                    gg       ____] ][/~__"\,m m_74,        g,    _______J!4,[ m.~\,7"_ ][  .
+                                                                           _  JL 7\_-_J'4_F            j,  g  )(  "  ]'  "  ]'  X                    j,       "#47]_J'\_""_7'4_7"6J'        j,    47m"W474_J'6_7"_/`\_~ JL, -
+                                                                       .,  _  .,  _  _, _ _.,.,_ _ _.         j,  g  j,  g  j,  g  j,             g      g        _ .,, _. _,._, __ _,,    .,, _.,_,_ __,_ _,, __ .,, _.,.,._   ,
+                                                                          __, ][  m  ][ -J`-6J`# m m]         gg  X ]""'""" ""' X  jg            jg     jg,       ].J[[_#].J[]][ ## ][[    ][[ m][][# #][# ][[ #] ][[ #][][ ]  ._
+                                                                    _      _  _,     _,        _ _.,.,.,, __,     g  j,                j   ,  j      j,                                 _.            __,.,_     ,_ _., ,_ _ _  ,
+                                                                      "47` m  ][ ]##    ]m# ~7`-_`][][#mm]##[)SS( "  ]' "X" {7']X" {7' ]   '  ]   X  ]'  X  )(  X  ](  X  XX[)SX XX()XX]##[]2X XX()XXc#mmmm#[XXS]##[#m#]#m[# m  [
+                                                                   ._  _,., _ _, __      _ _,.,._,                      jg, gg jg, j,  g  g  j,             j,  g  j,  g  j,                       j,                         .,., _,  _
+                                                                47  m  ][-\_" ][  m  47  m "\7'm m]#m[jgg ]X' {7  X  )(  X  ](  X  )(  ]   [  )   X  )(  X  ]'  "  ]'  "  ]'  X' gg,jgg ggp 4( ]X' ]' ]X' 4r ]X' gg,]X' gg,W##][][ ]   "
+                                                           ., , _, ._  _, ._  _, , __ _,._,                   j,     g, jg, gg  g  j,  j  ", ]\  jg  gg           j,                        j,                                 __ _ _
+                                                         ] "L.'m ]][ mm ]#[ m] ][[ #] ][# #        ]"  "' ]"' )(  X  ](  X  ](  X  )(  ]   [  ]   X  ](  X  )(  X  ]s  X  )(  "' ]"  "' ]"  )(  X  )(  X  ]( ]"' ""        mm#][][4,F ""
+                                                             '  "` -~  "` -~  "` -~' "~ -~'         '  ]'  "  ]'     "" ]"' "" ]"" ""']"" ""']"" ]"  ""            "          "   '  ]   '  ]'                "  ]'        -~' ""  -   "
+                                                      [ m m][ [][m m][# ]m[ m] ][]][            ]      ]'  "  ]' gXg ]L  X  4( ]X  4(        ]4  "X  ](  X  ]s  4, ](  4, Js,jXg  [ jJg gL, ]( gX,jJs,gXgjJs, X  ]'     [# ]#[-6]' -
+                                                      ' -`'-`"`-'~ ""'" -~'~""-~'--`            "'     "' ]"' ""     ]'  "  ]'  "  ]'         ]   "  ]'  "  ]'  "  ]'  "          '         ]'                "  ""     '! -~' -`
+                                                 .__  [ J`L"L_'m ]][ m4_J4[ m]L#,jgg gg,jgg gg,jgg gg,jgg gg, j,  X  "g  X  )( ]X  aap 4  aap 4  ]X  )(  X  ](  X  )( ]\, gg,jgg  [  ]   [  ](  X  )( ]\, "g ggg j, jgg.6#,4 7
+                                                 -~"  ' " ""' `" ]-` #" -~' #-~"`]"" "!']"" "!']"" "!']"" "!' ]'    j/'  "  ]'  "  ??' ]  ??' ]   "  ]'  "  ]'  "  ]' j"  ]'  "   '  ]   '  ]'  "  ]' g" j/'  "  ]' ]"")"~' "
+                                                  _  "[ 4 F-~_'"\7-~_"~\74[ #]"4,jgg j,  X   [  ]   , jgg  g  )( ]X  ](  X  aapqaa aapqaa aapqaa ]X  {7 ]X' {[ ]X' {[ ]X  'g  X'  [  ]  aapqaa  X  {7 ]X jgg, X  j, jga][][ 4
+                                                  -   '  "  ""'"`" ""~-`""` "" ][]"" ]'             ' ]""  "      "  ]'  "  ??')?? ??')?? ??')??  "  ]'  "  ]'  "  ]'  "  /'  "   '  ]  ??')??  "  ]'  "  ]'     ]' ]""-'-` -
+                                              ._  ] .7\,m m"~_' 4[ ._, 47][ m    jg, )(  g  ",  4  ",  j,  g  {7  X     /"gj"\,/"g]\/'"\"]"/' )   X  4r ]X' 4r ]X' 4r ]X' 4(  X'  [  ]      {[ ]X' j,  X  gg    .__,[ W.7\,W # "[  _,  m
+                                              _, _J_-\/`4_7./\, JL  _  J6-6_7     g  )(  "  j"  J, j/  ]'  "  Js gXg    \g!]g/'\g"j/g,g\gj/\,jJg gX, Js jS, Js jS, Js jS, Js  X, gL,jJg     J( jS, ]'  X  j,    -F#'\_7"\/`-~' _6  _
+                                       ., , _.,.,._, _. _ _., , _,    _ _,__, j,  g  j,  g   ,  j   ,  j,  g jg,    g j,, gj j,, gq,j,           gg  j, gg jg, gg jg,  g  j,  g   , jg   ,  j,  g  j,    _ _,, _. _,, _ ,_ ._, _. _ _., ,_,_  _
+                                       __ ]J`][][]#[ m] m m 4J        -67 m][ )( ]"" ""' X   [  ]   [  j(  X  )(    4,J'[ X],J'\j7 \r             X  )(  X  )(  X  )(  X  )(  X   [  )   [ ]""  X  gg    m.J[[_#] ][[_# [# ]#[ m] m #][ [_~, ._,"~~'
+                                   , _. _,._,           _,,., ,       ,,.,    j,  g  j,  g          ,  j,  g  g  jg g j,gj, ,g         g  j,     jg     jg                    g   ,  g                                  j,        _,, __ _,_., _ _,  _
+                               ]Wm[\_`_~4,mmm XX[ ]  XX(##m \_ ]m# m#m.7L,XXX ]'  X  )(  X  "7']4"  '  ]'  "  jr  X ]g/ [ X) ](]QQ QQf ]   ( ]QQ  X ]QQ  X ]QQfQQQ]QQf]QQ QQf X   [  j'  [  )(  X  )(  X  ]( XXX )(  X  ]'  ]   [ mmm]##[#m#][ m ][
+                                   __ _ _,, _                  _ _., __,_         g  j,  g                        g  g, jg         j,        ,,gjj ,g j               g g     g   ,                g  j,  g  j,  g                       _,_ __,,,.,               _   ,
+                                ][  m _~4,[ m XX[)SX  [ ]SX XS(J"4.F"6#mm[ X ]{7' X  )(  X  "7']4" "7']{7 "Z']{7' X  ](  X  QQf]QQ )( ]QQ QQfj/g g4,]g/ QQQ]QQfQQQ]QQfj{g QQf X   [  ]  XX( )( "X' jr  J' jr  J' jr ]X" {7']{"  [ ]SX XX(##m]##m.7L,W#m        ][  m
+                                       __ , m_,_,__,                          gg  g  j,  g, jg  g,  ,  j,  g  j, g      g   g,  g      j        jg ,g,j                   j,  g,  ,      ,  g, jg,]sg 4g ]sg {g, sg jg,     j                __,_,.,    .,  _      _
+                                       ][ \.7"[J`# #     "' ]"             X  ](  X  )(  X   (  ]   [  )(  X  )(  4, ](  {, ](  X      ]         jr  J'                   )(  X   [      [  ](  X  ](  S  ](  X  ](  X  )(  ]  ]" mmm]##[#mm][ m J`  m  -`  "      "
+                                       "~  '  -  -"`     ]   "                "" ]"" ""' "' ]"  "' ""']"" ""']""']'     ]'  "" ]""    ]""       ]']'" "                   ""' "'  '      '  "' ]"' "" ]"' "" ]"' "" ]"'     ]   ' -`' "" -`" "~'~ "`
+                               .__, m  4[  m  ][ m m     ]   "     m][ ]'  X         4(  X  gL, ]     "L']4/'       ]4( "X  4(        ]4  "[                )(  X  )(  4, ]L jXg  '  ]   [ jJs gZ,jJs, 4, ]( "Z  ](  X  ]s jJg  [  ]     ][# m][# ]m[ W"L" "#
+                                    "  -`  "  -` -"`     "' ]"     ""' ""  "         ]'  "      ]     " "]']         ]'  "  ]'         ]   '                ]'  "  ]'  "  ]'     ]"  "'  '             "  ]'  "  ]'  "  ]'      '  "'    -'! ""'"""`""'- '` "
+ ][4 F                   "` ___.__,[ 7.`4,` 7"[]'4 F][][J66][ [4 ]-[ 7jgg,ggg ](  X  gg,jgg  [  4 ]]7'X ])( [J'4g7]LJ'{,[ r aapqaa aap 4  aapqaajr],'\/ ]X  )( ]X  )( jgg gg, X   [  ]  ]\  j,  g jgg,]X  {[ ]X  )(  g  ](  ]  ][  ]  ]\  ](  g W ]76_7] ][[ W"\7` _   ' .__  `        `\7
+-~' ~                              ""  '" -~  -'  " -'-'-`'-`"` ~' ""         ]'  "          '  ] ]' '" ]]' ']'" "]']'" ]"             ]         "] " '  "  ]'  "  ]'         "   '  ]   '  "' ]"'     "  ]'  "  ]' ]"' ]'  ]   '  ]   "  ]' ]"'~-~"` ~-""`'"~- '' "`                  " '
+]( jgg"[]`        "`  W 4 ]~[ F 4[ [ m] ][jgg.6#,jgg.WJ,J6L][ [J'4_mJL j,  X  )(  X  gg, \,  [  4 ]]/'J'\)( [ qp X X qp r]L]\/'"g" aap ]  ]( qaajr],qaa  X jgg,]X  {[ ]X  ]( qaa]]/''\" aapg j  X jgg, X  4( ggg j,  X  ]g  4  ][  ]   X jgg gggW ]#[ #] ][[ m] ][`_~ __, ]   [  .,  _ J6m
+   ]"! "'             "  "` -~  -` ' "" ][]"")"~']"!-~"`~"~-` [" -""~" ]'  "  ]'  "  ]' j"   '  ]  "J'" ]]' ' )' " " )' ' " '"'J]" ??' ]   ' )??]' ')??  "  ]'  "  ]'  "  ]' )?? ""']'" ??'  '  "  ]'  "  ]'  "  ]'     /'  ]   '  ]     ]"" "!"~ -~' "" -'` #- ][-""  '  -   '  "'  " "~"
+](      ,     "F W ].7",J~47"_~~\7'[ m.~4,/~6.F4,                   X ]\,  X         4r  X'  [  4'  [ ]"\]"X'g"\g7"LJ"{,/"g] ](( X)()("\"j/\,g"g]( ( )( ]X' {7    j"\,/"Lj"\,"g"j/\,!\"]"/'"\/  X  gg jg, {7 ]X' )(  X  ](  ]  ]r    ___,_~\.7"____,          ___,~_"  [     ._  _, ._,W ]
+Js,    g"     _6 -\'"\_`4_J\7\__"_,6_7"_J'\_F"LJ'                   X  g" gZg        Js  X, gL, J,     ]( gg["g/'gg"jg/'\g!]gJ'\g7 \" g\g]\/'"g! "/ jJs jS, Js    ]g/'\g7]g/'g\g]\/'g"gj/\,g"g  X  j,  g  Js jS, Js,jSg Js,jJg js    "#4'~_/"\_~47m'          "7m'_\_         ,  _,  _ "\"
+ g  g     _ _._. _ . __,_ _, _  ., , __,_  _ _,., j,  j   ,  g  j,  g  j,  g  j,  g        j,j,g gj,j, g jgj,    j, jg,  a  qp , g j, g gj,j,j,,  g   g  g  j,  g  j,  j,j,g    j,j, j  g, jgp j,   g  j,     g  j,  g  j,  j   ,        _ . __,_ .,       ___    _ _.__  _ ._.  .,
+'g  X     m m.7',m ] #][#.J[ m -~"`4J'.~,, m ][][]\, "j ]', ""' )(  X  )(  X  )(  X        )()({,7)(j,]L j/\ X )(j," ]( qap aa ]J' )( 4g7  (      X   X  X  )(  X  )( , Xj",,   )()(j",  [  ]( j,']'g "j,     X  )(  X  )(  ]  ""'       m_J #][-67        L`-    m #.7,, ] .7', _,
+   j  .,.,_ __,.,_ _ __,     _ _ .,, _.,_  _ _,_ jg  j,  g   g  j, gg  j,., _       j,g      p g gj,j,  ,  j,g j,     g  a j j,j   ,_  q      .     g,g    _ _,_.,j j, g  ,   j,j,j,g    j g    j,g           ,  j,  g  j,  j   , ___  g  .,  g  _,   _.__,   _ .,._,.,.,_ _.,.,._,
+   ]   4F m.m][][#_J #][     m -67 4J'.~,, m .7,, )  j/']L   X  )(  X  )( 4J'       j",,    qa XjX)(J(  [  )(S )(     X  Q ]_J()   [#  ap "~' _,    g",](  m_J[m][),j, X  [j,g X)(J(S j  ] X j  )(S  ,       /", jr ]"" )(  ]   [ m/"  X  ][  J'   ][_m]/ '   ]_J[]][ 47 m m][][ ][     jg
+                     __  j,  g            jg         j,  j   g  g,  g  g, jg  j, jg  qp  g   p j,, gj  qp jg  qp  a j,g  a  g, j_, qp  j   p  g  jg  gp jg  j,  g j,g  a  qp jj,  p  q  gj  g,  g j,g  g j,g gq, ,g jg  j, jg, gj  j   g  g,  g  j,  g  g,  g  g,  g   ,         _,
+               ` ""~  !            !"~        ~"`-"~                                                                                                                                                                                                                         ~"` "'
+
+
+
+
+
+5、cmatrix 命令
+   这个很酷！《黑客帝国》那种矩阵风格的动画效果。
+   安装
+        sudo apt-get install cmatrix
+   运行
+        cmatrix
+
+6、factor命令
+    分解因数，这个……可以帮家里的小学生解题
+运行：
+    factor 60
+    60: 2 2 3 5
+
+7、oneko 命令
+    桌面上出现一只喵星人，跟着你的鼠标跑，你不动了它就睡觉。哈哈，这个挺不错!
+    安装
+        sudo apt-get install oneko
+    运行
+        oneko
+
+
+8、boxes命令
+    在输入的文本或者代码周围框上各种ASCII 艺术画。
+    安装
+        sudo apt-get install boxes
+    运行
+    echo 'this is a dog' | boxes
+    /*****************/
+    /* this is a dog */
+    /*****************/
+
+    echo 'this is a animal' | boxes -d dog
+              __   _,--="=--,_   __
+             /  \."    .-.    "./  \
+            /  ,/  _   : :   _  \/` \
+            \  `| /o\  :_:  /o\ |\__/
+             `-'| :="~` _ `~"=: |
+                \`     (_)     `/
+         .-"-.   \      |      /   .-"-.
+    .---{     }--|  /,.-'-.,\  |--{     }---.
+     )  (_)_)_)  \_/`~-===-~`\_/  (_(_(_)  (
+    (  this is a animal                     )
+     )                                     (
+    '---------------------------------------'
+    
+9、xeyes命令
+    xeyes命令是一个图形显示程序。运行这个程序，你会看到一双萌萌的眼睛会一直盯着你。
+    安装
+        sudo apt-get install xeyes
+    运行
+        xeyes    
+
+
+10、pv命令
+    有时候我们在电影屏幕上看到一些字幕一个个匀速显示出来，像有人在边敲键盘，边显示一样。Linux上的pv命令可以实现这种效果。
+    安装
+        sudo apt-get install pv
+    运行
+        echo "welcome to github.com/songyue" | pv -qL 10
+
+

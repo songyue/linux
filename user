@@ -1,0 +1,53 @@
+用户创建和组操作
+1 useradd – 增加一个新用户到附加用户组
+2 useradd – 增加一个新用户到主要用户组
+3 usermod – 将一个已有用户增加到一个已有用户组中
+4.groupadd - 创建新组
+5.passwd -  修改密码
+6.id     - 查看用户的属性
+4 附：管理用户（user）和用户组（group）的相关工具或命令
+
+在 Linux 用户系统中存在两类组。第一类是主要用户组，第二类是附加用户组。
+所有的用户帐户及相关信息都存储在 /etc/passwd 文件中，/etc/shadow 
+和 /etc/group 文件存储了用户信息。
+
+示例：
+新建用户并设置分组
+    useradd -G {group-name|groupname1,groupname2} username
+    useradd -g {group-name} username
+这里大G和小g都是声明加入到用户组，但是小g不会创建用户的默认组，而是直接设置主组
+
+usermod -g {group-name} username 更新用户主组
+usermod -a -G {group-name} username 将用户添加到组，并且不离开原组
+gpasswd -d user group   从组中移除
+
+
+附：管理用户（user）和用户组（group）的相关工具或命令¶
+1）管理用户（user）的工具或命令
+
+useradd    注：添加用户
+adduser    注：添加用户
+passwd     注：为用户设置密码
+usermod    注：修改用户命令，可以通过usermod 来修改登录名、用户的家目录等等；
+pwcov      注：同步用户从/etc/passwd 到/etc/shadow
+pwck       注：pwck是校验用户配置文件/etc/passwd 和/etc/shadow 文件内容是否合法或完整；
+pwunconv   注：是pwcov 的立逆向操作，是从/etc/shadow和 /etc/passwd 创建/etc/passwd ，然后会删除 /etc/shadow 文件；
+finger     注：查看用户信息工具
+id         注：查看用户的UID、GID及所归属的用户组
+chfn       注：更改用户信息工具
+su         注：用户切换工具
+sudo       注：sudo 是通过另一个用户来执行命令（execute a command as another user），su 是用来切换用户，然后通过切换到的用户来完成相应的任务，但sudo 能后面直接执行命令，比如sudo 不需要root 密码就可以执行root 赋与的执行只有root才能执行相应的命令；但得通过visudo 来编辑/etc/sudoers来实现；
+visudo     注：visodo 是编辑 /etc/sudoers 的命令；也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的；
+sudoedit   注：和sudo 功能差不多；
+
+2）管理用户组（group）的工具或命令
+groupadd    注：添加用户组；
+groupdel    注：删除用户组；
+groupmod    注：修改用户组信息
+groups      注：显示用户所属的用户组
+grpck
+grpconv     注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建；
+grpunconv   注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件；
+
+将一个用户添加到某个组，即可让此用户拥有该组的权限。比如在配置 VPS 上的 LAMP 服务器的时候，运行网站的 apache 用户修改的文件，如果服务器管理用户 cnzhx（可以通过 ssh 登录到服务器）需要修改此文件的话，就可以将 cnzhx 加入到 apache 组中达到目的。
+
