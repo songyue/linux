@@ -1,0 +1,25 @@
+Linux 设置默认编辑器
+visudo 等操作会打开默认编辑器，在linux中默认编辑器读取EDITOR环境变量，可通过一下命令设置
+export EDITOR=nano
+可将其加入~/.bashrc文件，使得每次登录都可使用
+vim ~/.bashrc
+	export EDITOR=vim
+source ~/.bashrc
+
+debian系统提供了一个管理工具来设置默认编辑器
+sudo update-alternatives --config editor 
+
+系统时间设置
+sudo apt install ntpdate
+sudo ntpdate ntp.aliyun.com #阿里云的时间服务器
+sudo hwclock --localtime --systohc #将时间更新到硬件上
+
+ubuntu18.04忽略笔记本合盖设置方法
+打开terminal：
+sudo vim /etc/systemd/logind.conf
+然后将其中的：
+#HandleLidSwitch=suspend
+改成：
+HandleLidSwitch=ignore
+然后重启服务：
+sudo systemctl restart systemd-logind

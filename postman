@@ -1,0 +1,33 @@
+
+
+=====================================
+Pre-request Script
+
+// 设置全局token
+var token = '';
+// 如果是开发环境
+if(pm.variables.get("domain") == 'http://d.oa.studio'){
+    token = pm.environment.get("dev-token");
+}else{
+    token = pm.environment.get("test-token");
+}
+pm.environment.set("token", token);
+
+
+=====================================
+Tests
+
+// 获取response返回内容
+var rsb = responseBody; // 是字符串格式
+
+var json_rbs = JSON.parse(rsb);
+
+// 设置全局token
+pm.environment.set("token", json_rbs.info.token);
+
+// 如果是测试环境
+if(pm.variables.get("domain") == 'http://d.oa.studio'){
+    pm.environment.set("dev-token", json_rbs.info.token);
+}else{
+    pm.environment.set("test-token", json_rbs.info.token);
+}
