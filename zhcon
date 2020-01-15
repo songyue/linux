@@ -1,0 +1,4 @@
+init 3 启动的linu不支持中文,zhcon软件包含了中文显示和一个中文输入法-全拼
+安装方式 : apt-get install zhcon
+使用方式 : zhcon --utf8 --drv=vga 或者设置别名: alias zhcon='zhcon --utf8 --drv=fb'
+
