@@ -68,14 +68,72 @@ Screen 有什么用?
 
 @see http://man.linuxde.net/screen
 
+屏幕分割
+
+现在显示器那么大，将一个屏幕分割成不同区域显示不同的Screen窗口显然是个很酷的事情。可以使用快捷键C-a S将显示器水平分割，Screen 4.00.03版本以后，也支持垂直分屏，快捷键是C-a |。分屏以后，可以使用C-a <tab>在各个区块间切换，每一区块上都可以创建窗口并在其中运行进程。
+
+可以用C-a X快捷键关闭当前焦点所在的屏幕区块，也可以用C-a Q关闭除当前区块之外其他的所有区块。关闭的区块中的窗口并不会关闭，还可以通过窗口切换找到它。
+
+会话锁定与解锁
+
+Screen允许使用快捷键C-a s锁定会话。锁定以后，再进行任何输入屏幕都不会再有反应了。但是要注意虽然屏幕上看不到反应，但你的输入都会被Screen中的进程接收到。快捷键C-a q可以解锁一个会话。
+
+也可以使用C-a x锁定会话，不同的是这样锁定之后，会话会被Screen所属用户的密码保护，需要输入密码才能继续访问这个会话
+
+更多screen功能
+
+同大多数UNIX程序一样，GNU Screen提供了丰富强大的定制功能。你可以在Screen的默认两级配置文件/etc/screenrc和$HOME/.screenrc中指定更多，例如设定screen选项，定制绑定键，设定screen会话自启动窗口，启用多用户模式，定制用户访问权限控制等等。如果你愿意的话，也可以自己指定screen配置文件。
+
+以多用户功能为例，screen默认是以单用户模式运行的，你需要在配置文件中指定multiuser on 来打开多用户模式，通过acl*（acladd,acldel,aclchg...）命令，你可以灵活配置其他用户访问你的screen会话。更多配置文件内容请参考screen的man页。
+
 ===== 常用命令  =====
 创建一个新的窗口
     screen -S david 
     还有一种方式: screen vi david.txt ,当退出vi时将退出会话窗口
 
+创建窗口
+    C-a c 
+
+切换窗口
+    C-a n 下一个
+    C-a p 上一个
+    C-a 0-9
+    C-a 空格
+    C-a C-a -> 在两个最近使用的 window 间切换 
+
+
+程序退出后，结束screen会话的方式
+    screen vi david.txt 当vim退出时，screeen自动退出
+
 查看窗口和窗口名称
+    Ctrl + a "
+设置当前窗口title
+    Ctrl + a A
+分屏
+    水平 Ctrl + a S
+    垂直 Ctrl + a | (4.00.03之后之支持 )
+    切换分屏 Ctrl + a <tab>
+    关闭分屏 Ctrl + a X  (窗口会话不会关闭，可以通过其他窗口找到他)
+    关闭分屏 Ctrl + a Q  (窗口会话不会关闭，可以通过其他窗口找到他)
     
 会话分离与恢复
+    Ctrl + a d 分离回话
+    Ctrl + a z 把当前session放到后台执行，用 shell 的 fg 命令则可回去。
+    screen -r Session name  恢复到前台
+    screen -d Session name  将Session name会话分离，当时ssh网络中断时，会话会处于激活状态，此时不能直接-r恢复，但可增加-d参数，如 screen -dr session 分离会话，并在当前激活会话
 
+鼠标滚轮翻页
+    Ctrl+a [  或者 Ctrl + a <ESC>
+    退出 Ctrl+c
+复制粘贴
+    进入移动光标模式 Ctrl+a [  或者 Ctrl + a <ESC> (此模式操作与vim操作类似)
+    空格键设置开始标记
+    空格键设置结束标记
+粘贴 Ctrl + a ] 
 
-
+关闭或杀死一个窗口
+    C-a k
+清除dead会话,如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话）,这时screen -list会显示该会话为dead状态
+    screen -wipe
+退出所有窗口
+    C-a : 输入 quit
