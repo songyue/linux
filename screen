@@ -137,3 +137,8 @@ Screen允许使用快捷键C-a s锁定会话。锁定以后，再进行任何输
     screen -wipe
 退出所有窗口
     C-a : 输入 quit
+
+== = = = = = = = = = = 
+.bash_profile 不生效的问题
+screen 默认加载的文件为 .bashrc ，而不是 .bash_profile
+
