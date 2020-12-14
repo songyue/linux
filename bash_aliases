@@ -43,3 +43,9 @@ alias gitlogfile='git log --follow'
 # 查看指定用户的日志
 alias gitlogme='git log --author=songyue'
 
+# docker
+alias docker='sudo docker'
+alias webserver='/usr/bin/autossh -M 3581 -qnfNT  -g -R 3580:ubuntu-node1:8081 myaliyun'
+alias apt-get='sudo apt-get'
+alias apt='sudo apt'
+alias yii='./yii'
