@@ -1,2 +1,17 @@
 网络中断导致ssh卡死,幽雅的关闭连接方式 : ~.
 (shift + `) 在按 (.)
+通过SSH 连接 linux服务器提示 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+# grep StrictHostKeyChecking /etc/ssh/ssh_config
+#   StrictHostKeyChecking ask
+
+StrictHostKeyChecking 参数的三种配置值：
+
+StrictHostKeyChecking=no
+最不安全的级别，当然也没有那么多烦人的提示了，相对安全的内网测试时建议使用。如果连接server的key在本地不存在，那么就自动添加到文件中（默认是known_hosts），并且给出一个警告。
+
+StrictHostKeyChecking=ask
+默认的级别，就是出现刚才的提示了。如果连接和key不匹配，给出提示，并拒绝登录。
+
+StrictHostKeyChecking=yes
+最安全的级别，如果连接与key不匹配，就拒绝连接，不会提示详细信息。
+

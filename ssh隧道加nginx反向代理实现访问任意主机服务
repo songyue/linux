@@ -101,4 +101,98 @@ server {
 	
 }
 
+========= 20201215 更新
+修改sshd的配置，可省略nginx代理，直接暴露端口到外网ip
+#GatewayPorts no  # 绑定127.0.0.1
+#GatewayPorts yes  # 绑定0.0.0.0 
+重启sshd
+---------
+只允许转发不允许登陆的实现方式
+服务端创建用户，以proxy用户为例
+adduser proxy
+vim /etc/passwd
+    修改前
+    proxy:x:1003:1005:proxy,,,:/home/proxy:/bin/bash
+    修改后
+    proxy:x:1003:1005::/home/proxy:/usr/sbin/nologin
 
+然后客户端(内网服务器)连接方式
+ ssh -R 2022:127.0.0.1:22 192.168.1.168 -N
+-N 不执行远程命令
+
+这样就可以直接 ssh songyue@192.168.1.168 -p 2022 访问到内网服务器了
+---------
+我目前有个使用场景是，公司内的电脑装了一台虚拟机，里面运行开发环境，联网方式为 共享主机网络联网，实体机网络无法访问，这样虚拟机也相对安全
+然后虚拟机里开启的一个端口转发到外网ip，这样我的客户端（ssh客户端在MacBook）就可以通过外网访问虚拟机了，在公司内应该使用内网效率更高，也更安全，
+所以我写了一个脚本，实现虚拟机到ssh -R 到MacBook内网ip的转发功能，然后我的MacBook 直接访问本地的某个端口就能连接到虚拟机了，脚本如下：
+macbook 端的脚本：
+bogon:~ songyue$ cat /Users/songyue/work/github/linux/remotesh.sh
+    #!/bin/bash
+    # File Name: remotesh.sh
+    # Author: songyue
+    # mail: songyue118@gmail.com
+    # Created Time: Mon Dec 14 00:37:01 2020
+    ipaddr=`ifconfig en0 | grep 192| awk '{print $2}'`
+    if test -z $ipaddr
+    then
+        ipaddr=`ifconfig en0 | grep "192.168"| awk '{print $2}'`
+    fi
+    ssh workpc "/home/songyue/work/shell/autosshhelper.sh $ipaddr 2022 22"
+
+虚拟机的脚本：
+songyue@sy-web:~$ cat /home/songyue/work/shell/autosshhelper.sh
+    #!/bin/bash
+    # File Name: autosshhelper.sh
+    # Author: songyue
+    # mail: songyue118@gmail.com
+    # Created Time: Sun 13 Dec 2020 04:30:04 PM UTC
+    host='127.0.0.1'
+    port='22'
+    targetHost='192.168.1.168'
+    listenPort=2022
+
+    if test -n $1
+    then
+    targetHost=$1
+    fi
+
+    if test -n $2
+    then
+    listenPort=$2
+    fi
+
+    if test -n $3
+    then
+    prot=$3
+    fi
+
+    if test -n $1
+    then
+    echo "您的主机地址为: $host 需要转发的端口为: $prot 转发到您机器的端口为: $target"
+    echo "正在建立内网ssh代理..."
+    echo "ssh -R $listenPort:$host:$port $targetHost"
+    ps aux |grep  "ssh -R $listenPort" | grep -v 'grep' |awk '{print $2}' | xargs kill
+    ssh -R $listenPort:$host:$port $targetHost -N &&
+    exit
+    else
+    echo "请输入参数, 格式: autosshhelper [您的IP] [您监听的端口] [需要访问的服务器的端口] "
+    fi
+
+设置个别名 alias sshworkpc='/Users/songyue/work/github/linux/remotesh.sh; ssh sy-web'
+直接执行 sshworkpc 即可通过内网登陆虚拟机啦
+
+因为MacBook每天带回家，到公司ip会变，所以用脚本远程执行创建内网连接
+这里还有个问题，就是ssh 连接新主机（ip) 默认会有安全确认，远程脚本会卡住，配置一下ssh_config即可
+vim /etc/ssh/ssh_config
+StrictHostKeyChecking no 
+
+MacBook的ssh/config配置
+# 工作电脑，内网访问
+Host sy-web
+HostName localhost
+Port 2022
+---------
+上面的代理也可以转发其他端口，比如80
+ ssh -R 2080:127.0.0.1:80 192.168.1.168 -N 
+postman 测试时执行host变量为localhost:3580
+不过现在基本都是远程上直接单元测试了
