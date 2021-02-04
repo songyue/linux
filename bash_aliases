@@ -42,6 +42,10 @@ alias gitlog='git log  --oneline'
 alias gitlogfile='git log --follow'
 # 查看指定用户的日志
 alias gitlogme='git log --author=songyue'
+alias gitstatus='gitstatus'
+alias gitlogfilename='git log --name-only'
+alias gitphpcheck="git status -s | grep -E '.php$' | sed 's/[(\ M\ )|\?\?]//g' | xargs phpcs --standard=PSR12"
+
 
 # docker
 alias docker='sudo docker'
