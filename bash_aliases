@@ -37,15 +37,19 @@ alias docker='sudo docker'
 alias docker-nodejs-bash='docker exec -it node bash'
 
 #git
+alias gitcommit='git commit'
+alias gitdiff='git diff'
 alias gitlog='git log  --oneline'
-# 查看指定文件或目录的日志
+alias gitlogme='gitlog --author=songyue'
+alias gitlogmelastweek='gitlogme --since=1.weeks'
 alias gitlogfile='git log --follow'
-# 查看指定用户的日志
-alias gitlogme='git log --author=songyue'
-alias gitstatus='gitstatus'
-alias gitlogfilename='git log --name-only'
-alias gitphpcheck="git status -s | grep -E '.php$' | sed 's/[(\ M\ )|\?\?]//g' | xargs phpcs --standard=PSR12"
-
+alias gitlogname='git log --name-only'
+alias gitpush='git push'
+alias gitpull='git pull'
+alias gitstatus='git status'
+alias gitbranch='git branch'
+alias gitcheckout='git checkout'
+alias gitblame='git blame'
 
 # docker
 alias docker='sudo docker'
