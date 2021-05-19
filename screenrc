@@ -1,0 +1,41 @@
+#
+# ~/.screenrc
+#
+# skip the startup message
+#startup_message off
+#
+# Automatically detach on hangup.
+autodetach on
+#
+# If a screen dies, don't freeze the whole screen waiting for it.
+#nonblock on
+#
+# UTF-8 is necessary.
+defutf8 on
+#
+# Change default scrollback value for new windows: scrollback 10000
+defscrollback 10000
+#
+# start with visual bell as default
+#vbell off
+#vbell_msg "Bell on %t (%n)"
+#
+# 在最下一行显示窗口列表和时钟
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %c "
+#hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %c:%s "
+#
+# 关闭错误提示
+#vbell off
+#
+# default windows
+screen -t mysql_test 1 mysql 
+screen -t mysql_local 2
+screen -t vim 3 vim 
+screen -t phpunit 4 
+screen -t multitail_log 5 # ~/work/shell/screen_work_multitail_log.sh
+## linux定制编码
+#
+#defencoding gbk
+#encoding gbk gbk
