@@ -1,0 +1,105 @@
+适用于任何工作站的 Ubuntu 虚拟机
+使用单个命令获取即时 Ubuntu VM。 Multipass 可以启动和运行虚拟机，并像公共云一样使用 cloud-init 配置它们。原型您的云在本地免费启动。
+官网地址 https://multipass.run/
+
+常用命令
+
+-> ~ $ multipass help
+用法: multipass [options] <command>
+创建, 控制和连接 Ubuntu 实例。
+
+multipass 命令行工具, 用于管理 ubuntu 实例。
+
+参数:
+  -h, --help     查看本帮助内容
+  -v, --verbose  增加日志显示的详细程度。 通过在短参数中增加 'v' 来获取更多日志信息
+                 最多支持4个等级，如： -vvvv。
+
+可用的命令:
+  delete    删除实例
+  exec      在实例中执行命令
+  find      查找并列出可用于创建实例的镜像
+  get       获取某个配置项
+  help      查看帮助
+  info      查看实例信息
+  launch    创建并启动实例
+  list      列出所有实例
+  mount     挂载文件夹到实例
+  purge     清除已删除的实例
+  recover   恢复已删除的实例
+  restart   重启实例
+  set       设置某个配置项
+  shell     通过 shell 连接实例
+  start     启动实例
+  stop      停止实例
+  suspend   挂起实例
+  transfer  在本机和实例之间传输文件
+  umount    移除实例中挂载的文件夹
+  version   查看版本号
+
+                                                                                                                      
+$> multipass version                                                                                                    
+multipass  1.6.2+mac                                                                                                    
+multipassd 1.6.2+mac                                                                                                    
+                                                                                                                        
+$> multipass find                                                                                                       
+Image                       Aliases           Version          Description                                              
+snapcraft:core18                              20201111         Snapcraft builder for Core 18                            
+snapcraft:core20                              20201111         Snapcraft builder for Core 20                            
+core                        core16            20200818         Ubuntu Core 16                                           
+core18                                        20200812         Ubuntu Core 18                                           
+16.04                       xenial            20210128         Ubuntu 16.04 LTS                                         
+18.04                       bionic            20210129         Ubuntu 18.04 LTS                                         
+20.04                       focal,lts         20210223         Ubuntu 20.04 LTS                                         
+20.10                       groovy            20210209         Ubuntu 20.10                                             
+appliance:adguard-home                        20200812         Ubuntu AdGuard Home Appliance                            
+appliance:mosquitto                           20200812         Ubuntu Mosquitto Appliance                               
+appliance:nextcloud                           20200812         Ubuntu Nextcloud Appliance                               
+appliance:openhab                             20200812         Ubuntu openHAB Home Appliance                            
+appliance:plexmediaserver                     20200812         Ubuntu Plex Media Server Appliance                       
+                                                                                                                        
+$> multipass networks                                                                                                   
+Name     Type         Description                                                                                       
+bridge0  bridge       Network bridge with en2, en3                                                                      
+en0      Ethernet     Ethernet                                                                                          
+en1      wifi         Wi-Fi (AirPort)                                                                                   
+en2      thunderbolt  Thunderbolt 1                                                                                     
+en3      thunderbolt  Thunderbolt 2                                                                                     
+ 
+                                                                                                                        
+$> multipass launch appliance:openhab --network en0                                                                     
+Launched: workable-poacher                                                                                              
+                                                                                                                        
+$> multipass ls                                                                                                         
+Name                    State             IPv4             Image                                                        
+workable-poacher        Running           10.2.0.28        Ubuntu openHAB Home Appliance                                
+                                                                                                                        
+$> multipass exec workable-poacher -- snap info openhab   
+store-url: https://snapcraft.io/openhab                                                                                 
+contact:   snaps@canonical.com                                                                                          
+license:   unset                                                                                                        
+description: |                                                                                                          
+  openHAB - a vendor and technology agnostic open source automation software for your home.                             
+commands:                                                                                                               
+  - openhab.backup                                                                                                      
+  - openhab.client                                                                                                      
+  - openhab.help                                                                                                        
+  - openhab.influx                                                                                                      
+  - openhab.karaf                                                                                                       
+  - openhab.restore                                                                                                     
+  - openhab.start                                                                                                       
+  - openhab.status                                                                                                      
+  - openhab.stop                                                                                                        
+services:                                                                                                               
+  openhab.influx-setup: oneshot, disabled, inactive                                                                     
+  openhab.influxd:      simple, disabled, inactive                                                                      
+  openhab:              simple, enabled, active                                                                         
+snap-id:      WpdPxW72JupkC8XTgaJsig3LEHdrR56x                                                                          
+tracking:     latest/stable                                                                                             
+refresh-date: today at 13:05 UTC                                                                                        
+channels:                                                                                                               
+  latest/stable:    2.5.9  2020-10-19 (594) 153MB -                                                                     
+  latest/candidate: ↑                                                                                                   
+  latest/beta:      3.0.0  2020-12-23 (728) 189MB -                                                                     
+  latest/edge:      2.5.12 2021-02-24 (855) 155MB -                                                                     
+installed:          2.5.9             (594) 153MB -  
